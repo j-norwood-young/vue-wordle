@@ -18,12 +18,13 @@ const rows = [
 
 <template>
   <div id="keyboard">
-    <div class="row" v-for="(row, i) in rows">
+    <div class="row" v-for="(row, i) in rows" v-bind:key="i" >
       <div class="spacer" v-if="i === 1"></div>
       <button
         v-for="key in row"
         :class="[key.length > 1 && 'big', letterStates[key]]"
         @click="$emit('key', key)"
+        v-bind:key="key"
       >
         <span v-if="key !== 'Backspace'">{{ key }}</span>
         <svg
